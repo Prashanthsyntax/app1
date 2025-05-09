@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Registration Page</title>
+</head>
+
+<body style="background-color: lightblue;">
+    <h2 align="center">Registration Page</h2>
+
+    <form name="myForm" action="Success.html" onsubmit="return validateForm()" method="get">
+        <label>Name*</label>
+        <input type="text" id="nametxt" name="name" size="20"><br><br>
+
+        <label>Password*</label>
+        <input type="password" id="pwdtxt" name="password" size="20"><br><br>
+
+        <label>Email*</label>
+        <input type="text" id="emailtxt" name="email" size="30"><br><br>
+
+        <label>Phone no*</label>
+        <input type="text" id="phtxt" name="phone" size="20"><br><br>
+
+        <label>Gender</label>
+        <input type="radio" name="gender" id="m" value="m">Male
+        <input type="radio" name="gender" id="f" value="f">Female <br><br>
+
+        <label>Date of Birth</label>
+        <input type="date" id="bday" name="dob"><br><br>
+
+        <label>Languages Known</label><br>
+        <div class="checkboxgroup">
+            <input type="checkbox" name="lang" value="English"> English &nbsp;&nbsp;
+            <input type="checkbox" name="lang" value="Telugu"> Telugu &nbsp;&nbsp;
+            <input type="checkbox" name="lang" value="Hindi"> Hindi <br><br>
+        </div>
+
+        <label>Address</label><br>
+        <textarea rows="5" cols="50" id="addtxtarea" name="address"></textarea><br><br>
+
+        <input type="submit" value="Register">
+
+        <script>
+            function validateForm() {
+                var name = document.getElementById("nametxt").value.trim();
+                var pwd = document.getElementById("pwdtxt").value.trim();
+                var mobile = document.getElementById("phtxt").value.trim();
+                var email = document.getElementById("emailtxt").value.trim();
+
+                // Name validation
+                if (name.length < 6) {
+                    alert("The name must be at least 6 characters long.");
+                    return false;
+                }
+
+                // Password validation
+                if (pwd.length < 6) {
+                    alert("The password must be at least 6 characters long.");
+                    return false;
+                }
+
+                // Email validation
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if (!emailPattern.test(email)) {
+                    alert("Not a valid Email ID");
+                    return false;
+                }
+
+                // Phone number validation
+                var phonePattern = /^\d{10}$/;
+                if (!phonePattern.test(mobile)) {
+                    alert("Not a valid Phone Number");
+                    return false;
+                }
+
+                return true; // Submit form if all validations pass
+            }
+        </script>
+    </form>
+</body>
+
+</html>
